@@ -32,9 +32,6 @@ public class UIManager : MonoBehaviour
     public GameObject musicOnBtn;
     public GameObject musicOffBtn;
 
-    public GameObject leaderboardBtn;
-    public GameObject achievementBtn;
-    public GameObject iapPurchaseBtn;
     public GameObject removeAdsBtn;
     public GameObject restorePurchaseBtn;
 
