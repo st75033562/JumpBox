@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour
     [Header("Object References")]
     public PlayerController playerController;
     public GameObject mainCanvas;
-    public GameObject coloredButtons;
     public GameObject header;
     public GameObject title;
     public Text score;
@@ -26,8 +25,6 @@ public class UIManager : MonoBehaviour
     public GameObject playBtn;
     public GameObject restartBtn;
     public GameObject menuButtons;
-    public GameObject dailyRewardBtn;
-    public Text dailyRewardBtnText;
     public GameObject rewardUI;
     public GameObject settingsUI;
     public GameObject soundOnBtn;
@@ -35,20 +32,13 @@ public class UIManager : MonoBehaviour
     public GameObject musicOnBtn;
     public GameObject musicOffBtn;
 
-    [Header("Premium Features Buttons")]
-    public GameObject watchRewardedAdBtn;
     public GameObject leaderboardBtn;
     public GameObject achievementBtn;
     public GameObject iapPurchaseBtn;
     public GameObject removeAdsBtn;
     public GameObject restorePurchaseBtn;
 
-    [Header("Sharing-Specific")]
-    public GameObject shareUI;
-    public ShareUIController shareUIController;
-
     Animator scoreAnimator;
-    Animator dailyRewardAnimator;
     bool isWatchAdsForCoinBtnActive;
 
     void OnEnable()
@@ -67,8 +57,6 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         scoreAnimator = score.GetComponent<Animator>();
-        dailyRewardAnimator = dailyRewardBtn.GetComponent<Animator>();
-
         Reset();
         ShowStartUI();
     }
@@ -79,21 +67,6 @@ public class UIManager : MonoBehaviour
         score.text = ScoreManager.Instance.Score.ToString();
         bestScore.text = ScoreManager.Instance.HighScore.ToString();
         coinText.text = CoinManager.Instance.Coins.ToString();
-
-        if (!DailyRewardController.Instance.disable && dailyRewardBtn.gameObject.activeInHierarchy)
-        {
-            if (DailyRewardController.Instance.CanRewardNow())
-            {
-                dailyRewardBtnText.text = "GRAB YOUR REWARD!";
-                dailyRewardAnimator.SetTrigger("activate");
-            }
-            else
-            {
-                TimeSpan timeToReward = DailyRewardController.Instance.TimeUntilReward;
-                dailyRewardBtnText.text = string.Format("REWARD IN {0:00}:{1:00}:{2:00}", timeToReward.Hours, timeToReward.Minutes, timeToReward.Seconds);
-                dailyRewardAnimator.SetTrigger("deactivate");
-            }
-        }
 
         if (settingsUI.activeSelf)
         {
@@ -132,13 +105,7 @@ public class UIManager : MonoBehaviour
         newBestScore.SetActive(false);
         playBtn.SetActive(false);
         menuButtons.SetActive(false);
-        dailyRewardBtn.SetActive(false);
         settingsUI.SetActive(false);
-        shareUI.SetActive(false);
-
-        // These premium feature buttons are hidden by default
-        // and shown when certain criteria are met (e.g. rewarded ad is loaded)
-        watchRewardedAdBtn.gameObject.SetActive(false);
     }
 
     public void StartGame()
@@ -166,13 +133,11 @@ public class UIManager : MonoBehaviour
         playBtn.SetActive(true);
         restartBtn.SetActive(false);
         menuButtons.SetActive(true);
-        coloredButtons.SetActive(false);
 
         // If first launch: show "WatchForCoins" and "DailyReward" buttons if the conditions are met
         if (GameManager.GameCount == 0)
         {
             ShowWatchForCoinsBtn();
-            ShowDailyRewardBtn();
         }
     }
 
@@ -184,9 +149,6 @@ public class UIManager : MonoBehaviour
         score.gameObject.SetActive(true);
         playBtn.SetActive(false);
         menuButtons.SetActive(false);
-        dailyRewardBtn.SetActive(false);
-        watchRewardedAdBtn.SetActive(false);
-        coloredButtons.SetActive(true);
     }
 
     public void ShowGameOverUI()
@@ -200,10 +162,6 @@ public class UIManager : MonoBehaviour
         restartBtn.SetActive(true);
         menuButtons.SetActive(true);
         settingsUI.SetActive(false);
-        coloredButtons.SetActive(false);
-
-        // Show 'daily reward' button
-        ShowDailyRewardBtn();
     }
 
     void ShowWatchForCoinsBtn()
@@ -220,15 +178,6 @@ public class UIManager : MonoBehaviour
             watchRewardedAdBtn.SetActive(false);
         }
 #endif
-    }
-
-    void ShowDailyRewardBtn()
-    {
-        // Not showing the daily reward button if the feature is disabled
-        if (!DailyRewardController.Instance.disable)
-        {
-            dailyRewardBtn.SetActive(true);
-        }
     }
 
     public void ShowSettingsUI()
@@ -261,23 +210,6 @@ public class UIManager : MonoBehaviour
         // Give the coins!
         ShowRewardUI(AdDisplayer.Instance.rewardedCoins);
 #endif
-    }
-
-    public void GrabDailyReward()
-    {
-        if (DailyRewardController.Instance.CanRewardNow())
-        {
-            int reward = DailyRewardController.Instance.GetRandomReward();
-
-            // Round the number and make it mutiplies of 5 only.
-            int roundedReward = (reward / 5) * 5;
-
-            // Show the reward UI
-            ShowRewardUI(roundedReward);
-
-            // Update next time for the reward
-            DailyRewardController.Instance.ResetNextRewardTime();
-        }
     }
 
     public void ShowRewardUI(int reward)
@@ -341,16 +273,6 @@ public class UIManager : MonoBehaviour
 #endif
     }
 
-    public void ShowShareUI()
-    {
-        shareUI.SetActive(true);
-    }
-
-    public void HideShareUI()
-    {
-        shareUI.SetActive(false);
-    }
-
     public void ToggleSound()
     {
         SoundManager.Instance.ToggleSound();
@@ -397,14 +319,5 @@ public class UIManager : MonoBehaviour
     public void LoadCharacterScene()
     {
         SceneManager.LoadScene("CharacterSelection");
-    }
-    public void ShowColoredButtons()
-    {
-        coloredButtons.SetActive(true);
-    }
-
-    public void HideColoredButtons()
-    {
-        coloredButtons.SetActive(false);
     }
 }

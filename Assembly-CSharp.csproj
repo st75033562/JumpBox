@@ -73,7 +73,6 @@
     <Compile Include="Assets\_ColorPath\Scripts\PlaneController.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\PlayerController.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\Services\CoinManager.cs" />
-    <Compile Include="Assets\_ColorPath\Scripts\Services\DailyRewardController.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\Services\ScoreManager.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\Services\SoundManager.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\Services\Utilities.cs" />

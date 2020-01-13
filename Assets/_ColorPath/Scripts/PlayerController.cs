@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     public float destroyPlaneTime = 0.8f;
     public float movePlaneAndCoinTime = 0.5f;
     public int scoreToUpdateValue = 25;
-    public int hideButtonsJumpCount = 1000;
     // hide the two colored buttons after reaching this number of jumps
     public int initialPlanes = 4;
     // number of planes created at startup
@@ -281,10 +280,7 @@ public class PlayerController : MonoBehaviour
             }
 
             jumpCount++;
-            if (jumpCount >= hideButtonsJumpCount)
-            {
-                UIManager.HideColoredButtons();
-            }
+            SpeedPlaneFalling += jumpCount;
 
             if (buttonName == "RedButton")//Check this button is red or yellow
             {
