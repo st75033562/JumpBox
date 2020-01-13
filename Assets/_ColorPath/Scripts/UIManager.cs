@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     public GameObject newBestScore;
     public GameObject playBtn;
     public GameObject restartBtn;
-    public GameObject menuButtons;
+  //  public GameObject menuButtons;
     public GameObject rewardUI;
     public GameObject settingsUI;
     public GameObject soundOnBtn;
@@ -101,7 +101,7 @@ public class UIManager : MonoBehaviour
         score.gameObject.SetActive(false);
         newBestScore.SetActive(false);
         playBtn.SetActive(false);
-        menuButtons.SetActive(false);
+     //   menuButtons.SetActive(false);
         settingsUI.SetActive(false);
     }
 
@@ -129,7 +129,7 @@ public class UIManager : MonoBehaviour
         title.SetActive(true);
         playBtn.SetActive(true);
         restartBtn.SetActive(false);
-        menuButtons.SetActive(true);
+      //  menuButtons.SetActive(true);
 
         // If first launch: show "WatchForCoins" and "DailyReward" buttons if the conditions are met
         if (GameManager.GameCount == 0)
@@ -145,7 +145,7 @@ public class UIManager : MonoBehaviour
         title.SetActive(false);
         score.gameObject.SetActive(true);
         playBtn.SetActive(false);
-        menuButtons.SetActive(false);
+   //     menuButtons.SetActive(false);
     }
 
     public void ShowGameOverUI()
@@ -157,7 +157,7 @@ public class UIManager : MonoBehaviour
 
         playBtn.SetActive(false);
         restartBtn.SetActive(true);
-        menuButtons.SetActive(true);
+   //     menuButtons.SetActive(true);
         settingsUI.SetActive(false);
     }
 

@@ -330,7 +330,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COLOR PATH
+  m_Text: "\u8DF3\u8DC3\u8272\u5757"
 --- !u!222 &94558100
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5573,7 +5573,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130, y: -40}
+  m_AnchoredPosition: {x: 149, y: -40}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &1362687799
@@ -7046,7 +7046,6 @@ MonoBehaviour:
   newBestScore: {fileID: 408162230}
   playBtn: {fileID: 408162224}
   restartBtn: {fileID: 408162225}
-  menuButtons: {fileID: 408162223}
   rewardUI: {fileID: 408162217}
   settingsUI: {fileID: 408162216}
   soundOnBtn: {fileID: 408162215}
