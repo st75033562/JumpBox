@@ -43,9 +43,6 @@ public class UIManager : MonoBehaviour
     public GameObject removeAdsBtn;
     public GameObject restorePurchaseBtn;
 
-    [Header("In-App Purchase Store")]
-    public GameObject storeUI;
-
     [Header("Sharing-Specific")]
     public GameObject shareUI;
     public ShareUIController shareUIController;
@@ -136,16 +133,6 @@ public class UIManager : MonoBehaviour
         playBtn.SetActive(false);
         menuButtons.SetActive(false);
         dailyRewardBtn.SetActive(false);
-
-        // Enable or disable premium stuff
-        bool enablePremium = IsPremiumFeaturesEnabled();
-        leaderboardBtn.SetActive(enablePremium);
-        iapPurchaseBtn.SetActive(enablePremium);
-        removeAdsBtn.SetActive(enablePremium);
-        restorePurchaseBtn.SetActive(enablePremium);
-
-        // Hidden by default
-        storeUI.SetActive(false);
         settingsUI.SetActive(false);
         shareUI.SetActive(false);
 
@@ -217,13 +204,6 @@ public class UIManager : MonoBehaviour
 
         // Show 'daily reward' button
         ShowDailyRewardBtn();
-
-        // Show these if premium features are enabled (and relevant conditions are met)
-        if (IsPremiumFeaturesEnabled())
-        {
-            ShowShareUI();
-            ShowWatchForCoinsBtn();
-        }
     }
 
     void ShowWatchForCoinsBtn()
@@ -259,16 +239,6 @@ public class UIManager : MonoBehaviour
     public void HideSettingsUI()
     {
         settingsUI.SetActive(false);
-    }
-
-    public void ShowStoreUI()
-    {
-        storeUI.SetActive(true);
-    }
-
-    public void HideStoreUI()
-    {
-        storeUI.SetActive(false);
     }
 
     public void WatchRewardedAd()
@@ -373,18 +343,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowShareUI()
     {
-        if (!ScreenshotSharer.Instance.disableSharing)
-        {
-            Texture2D texture = ScreenshotSharer.Instance.CapturedScreenshot;
-            shareUIController.ImgTex = texture;
-
-#if EASY_MOBILE
-            AnimatedClip clip = ScreenshotSharer.Instance.RecordedClip;
-            shareUIController.AnimClip = clip;
-#endif
-
-            shareUI.SetActive(true);
-        }
+        shareUI.SetActive(true);
     }
 
     public void HideShareUI()
@@ -400,21 +359,6 @@ public class UIManager : MonoBehaviour
     public void ToggleMusic()
     {
         SoundManager.Instance.ToggleMusic();
-    }
-
-    public void RateApp()
-    {
-        Utilities.RateApp();
-    }
-
-    public void OpenTwitterPage()
-    {
-        Utilities.OpenTwitterPage();
-    }
-
-    public void OpenFacebookPage()
-    {
-        Utilities.OpenFacebookPage();
     }
 
     public void ButtonClickSound()
@@ -450,10 +394,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    bool IsPremiumFeaturesEnabled()
-    {
-        return PremiumFeaturesManager.Instance != null && PremiumFeaturesManager.Instance.enablePremiumFeatures;
-    }
     public void LoadCharacterScene()
     {
         SceneManager.LoadScene("CharacterSelection");

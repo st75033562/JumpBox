@@ -162,12 +162,6 @@ public class ShareUIController : MonoBehaviour
             Debug.Log("SharePNG failed: no captured screenshot.");
             return;
         }
-
-#if EASY_MOBILE
-        Sharing.ShareTexture2D(ImgTex, ScreenshotSharer.Instance.pngFilename, ConstructShareMessage());
-#else
-        Debug.Log("Sharing feature requires Easy Mobile plugin.");
-#endif
     }
 
     void ShareGIF()
@@ -226,16 +220,6 @@ public class ShareUIController : MonoBehaviour
     {
         toolbar.SetActive(true);
         statusbar.SetActive(false);
-    }
-
-    string ConstructShareMessage()
-    {
-        string msg = ScreenshotSharer.Instance.shareMessage;
-        msg = msg.Replace("[score]", ScoreManager.Instance.Score.ToString());
-        msg = msg.Replace("[AppName]", AppInfo.Instance.APP_NAME);
-        msg = msg.Replace("[#AppName]", "#" + AppInfo.Instance.APP_NAME.Replace(" ", ""));
-
-        return msg;
     }
 
     void LoadStaticImage()

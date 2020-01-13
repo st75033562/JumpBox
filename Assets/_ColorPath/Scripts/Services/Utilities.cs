@@ -30,52 +30,6 @@ namespace SgLib
             SceneManager.LoadScene(sceneName);
         }
 
-        public static void RateApp()
-        {
-            switch (Application.platform)
-            {
-                case RuntimePlatform.IPhonePlayer:
-                    Application.OpenURL(AppInfo.Instance.APPSTORE_LINK);
-                    break;
-
-                case RuntimePlatform.Android:
-                    Application.OpenURL(AppInfo.Instance.PLAYSTORE_LINK);
-                    break;
-            }
-        }
-
-        public static void ShowMoreGames()
-        {
-            switch (Application.platform)
-            {
-                case RuntimePlatform.IPhonePlayer:
-                    Application.OpenURL(AppInfo.Instance.APPSTORE_HOMEPAGE);
-                    break;
-
-                case RuntimePlatform.Android:
-                    Application.OpenURL(AppInfo.Instance.PLAYSTORE_HOMEPAGE);
-                    break;
-            }
-        }
-
-        public static void OpenFacebookPage()
-        {
-            Application.OpenURL(AppInfo.Instance.FACEBOOK_LINK);
-        }
-
-        public static void OpenTwitterPage()
-        {
-            Application.OpenURL(AppInfo.Instance.TWITTER_LINK);
-        }
-
-        public static void ContactUs()
-        {
-            string email = AppInfo.Instance.SUPPORT_EMAIL;
-            string subject = EscapeURL(AppInfo.Instance.APP_NAME + " [" + Application.version + "] Support");
-            string body = EscapeURL("");
-            Application.OpenURL("mailto:" + email + "?subject=" + subject + "&body=" + body);
-        }
-
         public static string EscapeURL(string url)
         {
             return WWW.EscapeURL(url).Replace("+", "%20");

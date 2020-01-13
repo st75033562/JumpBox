@@ -64,7 +64,6 @@
   <ItemGroup>
     <Compile Include="Assets\_ColorPath\Prefabs\MainCanvas\Scripts\RewardUIController.cs" />
     <Compile Include="Assets\_ColorPath\Prefabs\MainCanvas\Scripts\ShareUIController.cs" />
-    <Compile Include="Assets\_ColorPath\Prefabs\MainCanvas\Scripts\StoreUIController.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\CameraController.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\Character.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\CharacterManager.cs" />
@@ -73,15 +72,6 @@
     <Compile Include="Assets\_ColorPath\Scripts\GameManager.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\PlaneController.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\_ColorPath\Scripts\PremiumFeatures\AchievementUnlocker.cs" />
-    <Compile Include="Assets\_ColorPath\Scripts\PremiumFeatures\AdDisplayer.cs" />
-    <Compile Include="Assets\_ColorPath\Scripts\PremiumFeatures\AndroidBackButtonHandler.cs" />
-    <Compile Include="Assets\_ColorPath\Scripts\PremiumFeatures\InAppPurchaser.cs" />
-    <Compile Include="Assets\_ColorPath\Scripts\PremiumFeatures\PremiumFeaturesManager.cs" />
-    <Compile Include="Assets\_ColorPath\Scripts\PremiumFeatures\RatingRequester.cs" />
-    <Compile Include="Assets\_ColorPath\Scripts\PremiumFeatures\ScoreReporter.cs" />
-    <Compile Include="Assets\_ColorPath\Scripts\PremiumFeatures\ScreenshotSharer.cs" />
-    <Compile Include="Assets\_ColorPath\Scripts\Services\AppInfo.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\Services\CoinManager.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\Services\DailyRewardController.cs" />
     <Compile Include="Assets\_ColorPath\Scripts\Services\ScoreManager.cs" />
